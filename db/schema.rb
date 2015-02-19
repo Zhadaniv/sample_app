@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20150218182053) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "edbspl"
@@ -89,6 +89,13 @@ ActiveRecord::Schema.define(version: 0) do
     t.string  "forkcond", limit: nil, default: "-"
     t.boolean "fruiter",              default: false
     t.integer "kf",                   default: 0
+  end
+
+  create_table "microposts", force: true do |t|
+    t.string   "content"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "namekviv", primary_key: "nkviv", force: true do |t|
@@ -625,5 +632,12 @@ ActiveRecord::Schema.define(version: 0) do
   end
 
   add_index "tbtreeunder", ["woodyear", "regn", "fadm", "fory", "fell", "kvrt", "woodland", "kapl", "allot"], name: "tbtreekapltbtreeunder", unique: true, using: :btree
+
+  create_table "users", force: true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
